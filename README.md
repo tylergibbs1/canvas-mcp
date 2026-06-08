@@ -70,6 +70,16 @@ Add to `claude_desktop_config.json`:
 
 ```bash
 npm run dev               # run from source with tsx
-node test/smoke.mjs       # boot + verify all tools register (no token needed)
+npm test                  # boot + verify all tools register (no token needed)
+npm run eval              # contract/regression suite against live data (needs token)
 npm run inspect           # interactive MCP Inspector (needs a real token in env)
 ```
+
+## Evaluation
+
+- `eval/eval.mjs` (`npm run eval`) — asserts data-independent invariants against
+  the live API: deadline sorting, allowed status values, HTML stripping, cross-tool
+  grade consistency, and that every write tool's `confirm:false` path returns a
+  dry-run and never executes.
+- `eval/tasks.md` — realistic agent task prompts (happy path, multi-step, write
+  safety, scope boundary) for behavioral evaluation, each with "what good looks like."
