@@ -2,6 +2,7 @@
   "name": "canvas-mcp",
   "version": "0.1.0",
   "description": "MCP server for Canvas LMS (REST API). Read coursework, deadlines, grades; submit assignments; discussions and messages.",
+  "license": "MIT",
   "type": "module",
   "bin": {
     "canvas-mcp": "dist/index.js"
