@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      # Offline boot check: starts the server with a dummy token and verifies
+      # every tool registers. No Canvas credentials needed (the live eval suite,
+      # npm run eval, requires a real token and is intentionally not run in CI).
+      - run: npm test
